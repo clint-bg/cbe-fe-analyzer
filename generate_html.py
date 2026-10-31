@@ -132,36 +132,24 @@ html_content = f"""<!DOCTYPE html>
       background: #004b91;
     }}
 
-    /* Document Header - Matches NCEES PDF */
+    /* Document Header */
     .document-header {{
-      padding: 36px 40px 24px;
-      border-bottom: 2px solid #000;
+      padding: 32px 40px 20px;
+      border-bottom: 2px solid var(--primary);
       background: #fff;
     }}
 
-    .ncees-brand {{
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      margin-bottom: 24px;
-    }}
-
-    .ncees-logo-box {{
-      border: 3px solid #000;
-      padding: 6px 12px;
-      font-family: var(--font-family);
-      font-weight: 900;
-      font-size: 28px;
-      letter-spacing: -1px;
-      line-height: 1;
+    .doc-byu-badge {{
       display: inline-block;
-    }}
-
-    .ncees-tagline {{
-      font-size: 13px;
-      font-style: italic;
-      color: #334155;
-      margin-top: 6px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 12px;
     }}
 
     .doc-titles {{
@@ -618,19 +606,16 @@ html_content = f"""<!DOCTYPE html>
     </div>
   </div>
 
-  <!-- Document Header matching NCEES Exam Specification PDF -->
+  <!-- Document Header -->
   <header class="document-header">
-    <div class="ncees-brand">
-      <div>
-        <div class="ncees-logo-box">NCEES</div>
-        <div class="ncees-tagline">advancing licensure for engineers and surveyors</div>
-      </div>
+    <div style="text-align: center; margin-bottom: 8px;">
+      <span class="doc-byu-badge">Brigham Young University &bull; Chemical &amp; Biological Engineering</span>
     </div>
 
     <div class="doc-titles">
-      <div class="doc-title-main">Fundamentals of Engineering (FE)</div>
-      <div class="doc-title-sub">CHEMICAL CBT Exam Specifications</div>
-      <div class="doc-effective">Effective Beginning with the July 2020 Examinations</div>
+      <div class="doc-title-main">FE Chemical CBT Exam Specifications</div>
+      <div class="doc-title-sub">Undergraduate Curriculum Coverage Matrix</div>
+      <div class="doc-effective">Course Learning Outcomes &amp; Descriptions Mapped to FE Exam Specifications (Effective Beginning July 2020)</div>
     </div>
 
     <ul class="doc-bullets">
