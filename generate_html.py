@@ -720,11 +720,6 @@ for topic in coverage_data:
     t_lo = topic["totalLoCount"]
     t_desc = topic["totalDescCount"]
     t_tot = topic["totalMatchesCount"]
-    topic_courses = sorted(list(set(c for it in topic["items"] for c in it["courses"])))
-    if topic_courses:
-        topic_courses_tags = "".join(f'<span class="course-tag" onclick="filterByCourse(\'{c}\')" title="Click to filter by {c}">{c}</span>' for c in topic_courses)
-    else:
-        topic_courses_tags = '<span class="text-muted" style="color: #94a3b8; font-size: 13px;">—</span>'
 
     html_content += f"""
         <!-- Topic Header Row: {t_id}. {t_name} -->
@@ -748,9 +743,7 @@ for topic in coverage_data:
             <span class="coverage-pill {'has-matches' if t_tot > 0 else 'zero-matches'}" 
                   onclick="openTopicModal('{t_id}', 'all')">{t_tot}</span>
           </td>
-          <td class="cell-courses">
-            <div class="course-tags-container">{topic_courses_tags}</div>
-          </td>
+          <td class="cell-courses"></td>
         </tr>
     """
 
