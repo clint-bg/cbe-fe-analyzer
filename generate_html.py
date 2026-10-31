@@ -256,23 +256,67 @@ html_content = f"""<!DOCTYPE html>
     }}
 
     th.col-knowledge {{
-      width: 58%;
+      width: 42%;
     }}
 
     th.col-questions {{
-      width: 14%;
+      width: 10%;
       text-align: center;
       white-space: nowrap;
     }}
 
     th.col-lo {{
-      width: 14%;
+      width: 9%;
       text-align: center;
     }}
 
     th.col-desc {{
-      width: 14%;
+      width: 9%;
       text-align: center;
+    }}
+
+    th.col-coverage {{
+      width: 10%;
+      text-align: center;
+    }}
+
+    th.col-courses {{
+      width: 20%;
+      text-align: left;
+    }}
+
+    td.cell-courses {{
+      padding: 6px 12px;
+      vertical-align: middle;
+    }}
+
+    .course-tags-container {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      align-items: center;
+    }}
+
+    .course-tag {{
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--primary);
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      padding: 2px 6px;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }}
+
+    .course-tag:hover {{
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      transform: translateY(-1px);
     }}
 
     /* Topic Header Row */
@@ -662,7 +706,8 @@ html_content = f"""<!DOCTYPE html>
           <th class="col-questions">Number of Questions</th>
           <th class="col-lo" title="Number of BYU Course Learning Outcomes covering this item">Learning Outcomes</th>
           <th class="col-desc" title="Number of BYU Course Descriptions covering this item">Course Descriptions</th>
-          <th class="col-questions" title="Total BYU Coverage Items">Total Coverage</th>
+          <th class="col-coverage" title="Total BYU Coverage Items">Total Coverage</th>
+          <th class="col-courses" title="BYU Courses covering this topic">Covering Classes</th>
         </tr>
       </thead>
       <tbody id="specTableBody">
@@ -675,6 +720,11 @@ for topic in coverage_data:
     t_lo = topic["totalLoCount"]
     t_desc = topic["totalDescCount"]
     t_tot = topic["totalMatchesCount"]
+    topic_courses = sorted(list(set(c for it in topic["items"] for c in it["courses"])))
+    if topic_courses:
+        topic_courses_tags = "".join(f'<span class="course-tag" onclick="filterByCourse(\'{c}\')" title="Click to filter by {c}">{c}</span>' for c in topic_courses)
+    else:
+        topic_courses_tags = '<span class="text-muted" style="color: #94a3b8; font-size: 13px;">—</span>'
 
     html_content += f"""
         <!-- Topic Header Row: {t_id}. {t_name} -->
@@ -698,6 +748,9 @@ for topic in coverage_data:
             <span class="coverage-pill {'has-matches' if t_tot > 0 else 'zero-matches'}" 
                   onclick="openTopicModal('{t_id}', 'all')">{t_tot}</span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container">{topic_courses_tags}</div>
+          </td>
         </tr>
     """
 
@@ -709,6 +762,10 @@ for topic in coverage_data:
         desc_cnt = item["descCount"]
         tot_cnt = item["totalCount"]
         courses_attr = ",".join(item["courses"])
+        if item["courses"]:
+            subitem_courses_tags = "".join(f'<span class="course-tag" onclick="filterByCourse(\'{c}\')" title="Click to filter by {c}">{c}</span>' for c in item["courses"])
+        else:
+            subitem_courses_tags = '<span class="text-muted" style="color: #94a3b8; font-size: 13px;">—</span>'
 
         html_content += f"""
         <!-- Subitem Row: {full_id} -->
@@ -744,6 +801,9 @@ for topic in coverage_data:
                   onclick="openSubitemModal('{full_id}', 'all')">
               {tot_cnt}
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container">{subitem_courses_tags}</div>
           </td>
         </tr>
         """
@@ -1001,9 +1061,11 @@ html_content += f"""
 
   // Filter Functions
   function filterByCourse(courseCode) {{
+    const sel = document.getElementById('courseFilter');
+    if (sel) sel.value = courseCode || '';
     const rows = document.querySelectorAll('tr.subitem-row');
     rows.forEach(r => {{
-      const courses = r.getAttribute('data-courses').split(',');
+      const courses = r.getAttribute('data-courses').split(',').map(s => s.trim());
       if (!courseCode || courses.includes(courseCode)) {{
         r.style.display = '';
         if (courseCode) r.classList.add('highlighted');

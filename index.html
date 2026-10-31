@@ -233,23 +233,67 @@
     }
 
     th.col-knowledge {
-      width: 58%;
+      width: 42%;
     }
 
     th.col-questions {
-      width: 14%;
+      width: 10%;
       text-align: center;
       white-space: nowrap;
     }
 
     th.col-lo {
-      width: 14%;
+      width: 9%;
       text-align: center;
     }
 
     th.col-desc {
-      width: 14%;
+      width: 9%;
       text-align: center;
+    }
+
+    th.col-coverage {
+      width: 10%;
+      text-align: center;
+    }
+
+    th.col-courses {
+      width: 20%;
+      text-align: left;
+    }
+
+    td.cell-courses {
+      padding: 6px 12px;
+      vertical-align: middle;
+    }
+
+    .course-tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .course-tag {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--primary);
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      padding: 2px 6px;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .course-tag:hover {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      transform: translateY(-1px);
     }
 
     /* Topic Header Row */
@@ -639,7 +683,8 @@
           <th class="col-questions">Number of Questions</th>
           <th class="col-lo" title="Number of BYU Course Learning Outcomes covering this item">Learning Outcomes</th>
           <th class="col-desc" title="Number of BYU Course Descriptions covering this item">Course Descriptions</th>
-          <th class="col-questions" title="Total BYU Coverage Items">Total Coverage</th>
+          <th class="col-coverage" title="Total BYU Coverage Items">Total Coverage</th>
+          <th class="col-courses" title="BYU Courses covering this topic">Covering Classes</th>
         </tr>
       </thead>
       <tbody id="specTableBody">
@@ -664,6 +709,9 @@
           <td class="cell-center">
             <span class="coverage-pill has-matches" 
                   onclick="openTopicModal('1', 'all')">47</span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 263')" title="Click to filter by CBE 263">CBE 263</span><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span><span class="course-tag" onclick="filterByCourse('CBE 285')" title="Click to filter by CBE 285">CBE 285</span><span class="course-tag" onclick="filterByCourse('CBE 311')" title="Click to filter by CBE 311">CBE 311</span><span class="course-tag" onclick="filterByCourse('CBE 345')" title="Click to filter by CBE 345">CBE 345</span><span class="course-tag" onclick="filterByCourse('CBE 373')" title="Click to filter by CBE 373">CBE 373</span><span class="course-tag" onclick="filterByCourse('CBE 374')" title="Click to filter by CBE 374">CBE 374</span><span class="course-tag" onclick="filterByCourse('CBE 376')" title="Click to filter by CBE 376">CBE 376</span><span class="course-tag" onclick="filterByCourse('CBE 378')" title="Click to filter by CBE 378">CBE 378</span><span class="course-tag" onclick="filterByCourse('CBE 385')" title="Click to filter by CBE 385">CBE 385</span><span class="course-tag" onclick="filterByCourse('CBE 386')" title="Click to filter by CBE 386">CBE 386</span><span class="course-tag" onclick="filterByCourse('CBE 436')" title="Click to filter by CBE 436">CBE 436</span><span class="course-tag" onclick="filterByCourse('CBE 445')" title="Click to filter by CBE 445">CBE 445</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span><span class="course-tag" onclick="filterByCourse('CBE 476')" title="Click to filter by CBE 476">CBE 476</span><span class="course-tag" onclick="filterByCourse('MATH 112')" title="Click to filter by MATH 112">MATH 112</span><span class="course-tag" onclick="filterByCourse('MATH 113')" title="Click to filter by MATH 113">MATH 113</span><span class="course-tag" onclick="filterByCourse('MATH 302')" title="Click to filter by MATH 302">MATH 302</span><span class="course-tag" onclick="filterByCourse('MATH 303')" title="Click to filter by MATH 303">MATH 303</span><span class="course-tag" onclick="filterByCourse('PHSCS 121')" title="Click to filter by PHSCS 121">PHSCS 121</span></div>
           </td>
         </tr>
     
@@ -701,6 +749,9 @@
               3
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('MATH 113')" title="Click to filter by MATH 113">MATH 113</span><span class="course-tag" onclick="filterByCourse('PHSCS 121')" title="Click to filter by PHSCS 121">PHSCS 121</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 1.B -->
@@ -736,6 +787,9 @@
                   onclick="openSubitemModal('1.B', 'all')">
               9
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 263')" title="Click to filter by CBE 263">CBE 263</span><span class="course-tag" onclick="filterByCourse('MATH 112')" title="Click to filter by MATH 112">MATH 112</span><span class="course-tag" onclick="filterByCourse('MATH 113')" title="Click to filter by MATH 113">MATH 113</span><span class="course-tag" onclick="filterByCourse('MATH 302')" title="Click to filter by MATH 302">MATH 302</span><span class="course-tag" onclick="filterByCourse('PHSCS 121')" title="Click to filter by PHSCS 121">PHSCS 121</span></div>
           </td>
         </tr>
         
@@ -773,6 +827,9 @@
               5
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 376')" title="Click to filter by CBE 376">CBE 376</span><span class="course-tag" onclick="filterByCourse('CBE 436')" title="Click to filter by CBE 436">CBE 436</span><span class="course-tag" onclick="filterByCourse('MATH 303')" title="Click to filter by MATH 303">MATH 303</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 1.D -->
@@ -808,6 +865,9 @@
                   onclick="openSubitemModal('1.D', 'all')">
               7
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 263')" title="Click to filter by CBE 263">CBE 263</span><span class="course-tag" onclick="filterByCourse('MATH 302')" title="Click to filter by MATH 302">MATH 302</span><span class="course-tag" onclick="filterByCourse('MATH 303')" title="Click to filter by MATH 303">MATH 303</span></div>
           </td>
         </tr>
         
@@ -845,6 +905,9 @@
               4
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 263')" title="Click to filter by CBE 263">CBE 263</span><span class="course-tag" onclick="filterByCourse('MATH 302')" title="Click to filter by MATH 302">MATH 302</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 1.F -->
@@ -881,6 +944,9 @@
               19
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 263')" title="Click to filter by CBE 263">CBE 263</span><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span><span class="course-tag" onclick="filterByCourse('CBE 285')" title="Click to filter by CBE 285">CBE 285</span><span class="course-tag" onclick="filterByCourse('CBE 311')" title="Click to filter by CBE 311">CBE 311</span><span class="course-tag" onclick="filterByCourse('CBE 345')" title="Click to filter by CBE 345">CBE 345</span><span class="course-tag" onclick="filterByCourse('CBE 373')" title="Click to filter by CBE 373">CBE 373</span><span class="course-tag" onclick="filterByCourse('CBE 374')" title="Click to filter by CBE 374">CBE 374</span><span class="course-tag" onclick="filterByCourse('CBE 376')" title="Click to filter by CBE 376">CBE 376</span><span class="course-tag" onclick="filterByCourse('CBE 378')" title="Click to filter by CBE 378">CBE 378</span><span class="course-tag" onclick="filterByCourse('CBE 385')" title="Click to filter by CBE 385">CBE 385</span><span class="course-tag" onclick="filterByCourse('CBE 386')" title="Click to filter by CBE 386">CBE 386</span><span class="course-tag" onclick="filterByCourse('CBE 436')" title="Click to filter by CBE 436">CBE 436</span><span class="course-tag" onclick="filterByCourse('CBE 445')" title="Click to filter by CBE 445">CBE 445</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span><span class="course-tag" onclick="filterByCourse('CBE 476')" title="Click to filter by CBE 476">CBE 476</span></div>
+          </td>
         </tr>
         
         <!-- Topic Header Row: 2. Probability and Statistics -->
@@ -903,6 +969,9 @@
           <td class="cell-center">
             <span class="coverage-pill has-matches" 
                   onclick="openTopicModal('2', 'all')">14</span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 263')" title="Click to filter by CBE 263">CBE 263</span><span class="course-tag" onclick="filterByCourse('CBE 285')" title="Click to filter by CBE 285">CBE 285</span><span class="course-tag" onclick="filterByCourse('CBE 345')" title="Click to filter by CBE 345">CBE 345</span><span class="course-tag" onclick="filterByCourse('CBE 385')" title="Click to filter by CBE 385">CBE 385</span><span class="course-tag" onclick="filterByCourse('CBE 445')" title="Click to filter by CBE 445">CBE 445</span><span class="course-tag" onclick="filterByCourse('CBE 479')" title="Click to filter by CBE 479">CBE 479</span><span class="course-tag" onclick="filterByCourse('STAT 121')" title="Click to filter by STAT 121">STAT 121</span></div>
           </td>
         </tr>
     
@@ -940,6 +1009,9 @@
               1
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('STAT 121')" title="Click to filter by STAT 121">STAT 121</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 2.B -->
@@ -975,6 +1047,9 @@
                   onclick="openSubitemModal('2.B', 'all')">
               0
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="text-muted" style="color: #94a3b8; font-size: 13px;">—</span></div>
           </td>
         </tr>
         
@@ -1012,6 +1087,9 @@
               7
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 285')" title="Click to filter by CBE 285">CBE 285</span><span class="course-tag" onclick="filterByCourse('CBE 345')" title="Click to filter by CBE 345">CBE 345</span><span class="course-tag" onclick="filterByCourse('CBE 385')" title="Click to filter by CBE 385">CBE 385</span><span class="course-tag" onclick="filterByCourse('CBE 445')" title="Click to filter by CBE 445">CBE 445</span><span class="course-tag" onclick="filterByCourse('CBE 479')" title="Click to filter by CBE 479">CBE 479</span><span class="course-tag" onclick="filterByCourse('STAT 121')" title="Click to filter by STAT 121">STAT 121</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 2.D -->
@@ -1047,6 +1125,9 @@
                   onclick="openSubitemModal('2.D', 'all')">
               2
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('STAT 121')" title="Click to filter by STAT 121">STAT 121</span></div>
           </td>
         </tr>
         
@@ -1084,6 +1165,9 @@
               3
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 263')" title="Click to filter by CBE 263">CBE 263</span><span class="course-tag" onclick="filterByCourse('STAT 121')" title="Click to filter by STAT 121">STAT 121</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 2.F -->
@@ -1120,6 +1204,9 @@
               1
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 479')" title="Click to filter by CBE 479">CBE 479</span></div>
+          </td>
         </tr>
         
         <!-- Topic Header Row: 3. Engineering Sciences -->
@@ -1142,6 +1229,9 @@
           <td class="cell-center">
             <span class="coverage-pill has-matches" 
                   onclick="openTopicModal('3', 'all')">14</span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span><span class="course-tag" onclick="filterByCourse('CBE 374')" title="Click to filter by CBE 374">CBE 374</span><span class="course-tag" onclick="filterByCourse('CBE 378')" title="Click to filter by CBE 378">CBE 378</span><span class="course-tag" onclick="filterByCourse('CBE 436')" title="Click to filter by CBE 436">CBE 436</span><span class="course-tag" onclick="filterByCourse('CHEM 111')" title="Click to filter by CHEM 111">CHEM 111</span><span class="course-tag" onclick="filterByCourse('CHEM 112')" title="Click to filter by CHEM 112">CHEM 112</span><span class="course-tag" onclick="filterByCourse('PHSCS 121')" title="Click to filter by PHSCS 121">PHSCS 121</span></div>
           </td>
         </tr>
     
@@ -1179,6 +1269,9 @@
               5
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 374')" title="Click to filter by CBE 374">CBE 374</span><span class="course-tag" onclick="filterByCourse('PHSCS 121')" title="Click to filter by PHSCS 121">PHSCS 121</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 3.B -->
@@ -1214,6 +1307,9 @@
                   onclick="openSubitemModal('3.B', 'all')">
               2
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span><span class="course-tag" onclick="filterByCourse('PHSCS 121')" title="Click to filter by PHSCS 121">PHSCS 121</span></div>
           </td>
         </tr>
         
@@ -1251,6 +1347,9 @@
               7
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 378')" title="Click to filter by CBE 378">CBE 378</span><span class="course-tag" onclick="filterByCourse('CBE 436')" title="Click to filter by CBE 436">CBE 436</span><span class="course-tag" onclick="filterByCourse('CHEM 111')" title="Click to filter by CHEM 111">CHEM 111</span><span class="course-tag" onclick="filterByCourse('CHEM 112')" title="Click to filter by CHEM 112">CHEM 112</span></div>
+          </td>
         </tr>
         
         <!-- Topic Header Row: 4. Materials Science -->
@@ -1273,6 +1372,9 @@
           <td class="cell-center">
             <span class="coverage-pill has-matches" 
                   onclick="openTopicModal('4', 'all')">9</span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 376')" title="Click to filter by CBE 376">CBE 376</span><span class="course-tag" onclick="filterByCourse('CBE 378')" title="Click to filter by CBE 378">CBE 378</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span></div>
           </td>
         </tr>
     
@@ -1310,6 +1412,9 @@
               3
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 376')" title="Click to filter by CBE 376">CBE 376</span><span class="course-tag" onclick="filterByCourse('CBE 378')" title="Click to filter by CBE 378">CBE 378</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 4.B -->
@@ -1345,6 +1450,9 @@
                   onclick="openSubitemModal('4.B', 'all')">
               4
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 378')" title="Click to filter by CBE 378">CBE 378</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span></div>
           </td>
         </tr>
         
@@ -1382,6 +1490,9 @@
               1
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 378')" title="Click to filter by CBE 378">CBE 378</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 4.D -->
@@ -1418,6 +1529,9 @@
               1
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 378')" title="Click to filter by CBE 378">CBE 378</span></div>
+          </td>
         </tr>
         
         <!-- Topic Header Row: 5. Chemistry and Biology -->
@@ -1440,6 +1554,9 @@
           <td class="cell-center">
             <span class="coverage-pill has-matches" 
                   onclick="openTopicModal('5', 'all')">19</span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('BIO 130')" title="Click to filter by BIO 130">BIO 130</span><span class="course-tag" onclick="filterByCourse('CBE 263')" title="Click to filter by CBE 263">CBE 263</span><span class="course-tag" onclick="filterByCourse('CBE 285')" title="Click to filter by CBE 285">CBE 285</span><span class="course-tag" onclick="filterByCourse('CBE 345')" title="Click to filter by CBE 345">CBE 345</span><span class="course-tag" onclick="filterByCourse('CBE 385')" title="Click to filter by CBE 385">CBE 385</span><span class="course-tag" onclick="filterByCourse('CBE 445')" title="Click to filter by CBE 445">CBE 445</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span><span class="course-tag" onclick="filterByCourse('CBE 479')" title="Click to filter by CBE 479">CBE 479</span><span class="course-tag" onclick="filterByCourse('CHEM 111')" title="Click to filter by CHEM 111">CHEM 111</span><span class="course-tag" onclick="filterByCourse('CHEM 112')" title="Click to filter by CHEM 112">CHEM 112</span><span class="course-tag" onclick="filterByCourse('CHEM 357')" title="Click to filter by CHEM 357">CHEM 357</span></div>
           </td>
         </tr>
     
@@ -1477,6 +1594,9 @@
               6
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CHEM 111')" title="Click to filter by CHEM 111">CHEM 111</span><span class="course-tag" onclick="filterByCourse('CHEM 112')" title="Click to filter by CHEM 112">CHEM 112</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 5.B -->
@@ -1512,6 +1632,9 @@
                   onclick="openSubitemModal('5.B', 'all')">
               1
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CHEM 357')" title="Click to filter by CHEM 357">CHEM 357</span></div>
           </td>
         </tr>
         
@@ -1549,6 +1672,9 @@
               6
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 285')" title="Click to filter by CBE 285">CBE 285</span><span class="course-tag" onclick="filterByCourse('CBE 345')" title="Click to filter by CBE 345">CBE 345</span><span class="course-tag" onclick="filterByCourse('CBE 385')" title="Click to filter by CBE 385">CBE 385</span><span class="course-tag" onclick="filterByCourse('CBE 445')" title="Click to filter by CBE 445">CBE 445</span><span class="course-tag" onclick="filterByCourse('CBE 479')" title="Click to filter by CBE 479">CBE 479</span><span class="course-tag" onclick="filterByCourse('CHEM 112')" title="Click to filter by CHEM 112">CHEM 112</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 5.D -->
@@ -1584,6 +1710,9 @@
                   onclick="openSubitemModal('5.D', 'all')">
               2
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('BIO 130')" title="Click to filter by BIO 130">BIO 130</span></div>
           </td>
         </tr>
         
@@ -1621,6 +1750,9 @@
               4
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('BIO 130')" title="Click to filter by BIO 130">BIO 130</span><span class="course-tag" onclick="filterByCourse('CBE 263')" title="Click to filter by CBE 263">CBE 263</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span></div>
+          </td>
         </tr>
         
         <!-- Topic Header Row: 6. Fluid Mechanics/Dynamics -->
@@ -1643,6 +1775,9 @@
           <td class="cell-center">
             <span class="coverage-pill has-matches" 
                   onclick="openTopicModal('6', 'all')">32</span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span><span class="course-tag" onclick="filterByCourse('CBE 285')" title="Click to filter by CBE 285">CBE 285</span><span class="course-tag" onclick="filterByCourse('CBE 345')" title="Click to filter by CBE 345">CBE 345</span><span class="course-tag" onclick="filterByCourse('CBE 374')" title="Click to filter by CBE 374">CBE 374</span><span class="course-tag" onclick="filterByCourse('CBE 385')" title="Click to filter by CBE 385">CBE 385</span><span class="course-tag" onclick="filterByCourse('CBE 445')" title="Click to filter by CBE 445">CBE 445</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span><span class="course-tag" onclick="filterByCourse('CBE 476')" title="Click to filter by CBE 476">CBE 476</span><span class="course-tag" onclick="filterByCourse('CBE 479')" title="Click to filter by CBE 479">CBE 479</span></div>
           </td>
         </tr>
     
@@ -1680,6 +1815,9 @@
               5
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 285')" title="Click to filter by CBE 285">CBE 285</span><span class="course-tag" onclick="filterByCourse('CBE 374')" title="Click to filter by CBE 374">CBE 374</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 6.B -->
@@ -1715,6 +1853,9 @@
                   onclick="openSubitemModal('6.B', 'all')">
               2
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 374')" title="Click to filter by CBE 374">CBE 374</span><span class="course-tag" onclick="filterByCourse('CBE 476')" title="Click to filter by CBE 476">CBE 476</span></div>
           </td>
         </tr>
         
@@ -1752,6 +1893,9 @@
               4
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 374')" title="Click to filter by CBE 374">CBE 374</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span><span class="course-tag" onclick="filterByCourse('CBE 479')" title="Click to filter by CBE 479">CBE 479</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 6.D -->
@@ -1787,6 +1931,9 @@
                   onclick="openSubitemModal('6.D', 'all')">
               3
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span><span class="course-tag" onclick="filterByCourse('CBE 374')" title="Click to filter by CBE 374">CBE 374</span></div>
           </td>
         </tr>
         
@@ -1824,6 +1971,9 @@
               1
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 374')" title="Click to filter by CBE 374">CBE 374</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 6.F -->
@@ -1859,6 +2009,9 @@
                   onclick="openSubitemModal('6.F', 'all')">
               6
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span><span class="course-tag" onclick="filterByCourse('CBE 285')" title="Click to filter by CBE 285">CBE 285</span><span class="course-tag" onclick="filterByCourse('CBE 345')" title="Click to filter by CBE 345">CBE 345</span><span class="course-tag" onclick="filterByCourse('CBE 385')" title="Click to filter by CBE 385">CBE 385</span><span class="course-tag" onclick="filterByCourse('CBE 445')" title="Click to filter by CBE 445">CBE 445</span><span class="course-tag" onclick="filterByCourse('CBE 479')" title="Click to filter by CBE 479">CBE 479</span></div>
           </td>
         </tr>
         
@@ -1896,6 +2049,9 @@
               8
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span><span class="course-tag" onclick="filterByCourse('CBE 374')" title="Click to filter by CBE 374">CBE 374</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span><span class="course-tag" onclick="filterByCourse('CBE 479')" title="Click to filter by CBE 479">CBE 479</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 6.H -->
@@ -1932,6 +2088,9 @@
               3
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 374')" title="Click to filter by CBE 374">CBE 374</span></div>
+          </td>
         </tr>
         
         <!-- Topic Header Row: 7. Thermodynamics -->
@@ -1954,6 +2113,9 @@
           <td class="cell-center">
             <span class="coverage-pill has-matches" 
                   onclick="openTopicModal('7', 'all')">35</span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span><span class="course-tag" onclick="filterByCourse('CBE 373')" title="Click to filter by CBE 373">CBE 373</span><span class="course-tag" onclick="filterByCourse('CBE 386')" title="Click to filter by CBE 386">CBE 386</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span><span class="course-tag" onclick="filterByCourse('CBE 476')" title="Click to filter by CBE 476">CBE 476</span><span class="course-tag" onclick="filterByCourse('CHEM 112')" title="Click to filter by CHEM 112">CHEM 112</span></div>
           </td>
         </tr>
     
@@ -1991,6 +2153,9 @@
               4
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span><span class="course-tag" onclick="filterByCourse('CBE 373')" title="Click to filter by CBE 373">CBE 373</span><span class="course-tag" onclick="filterByCourse('CHEM 112')" title="Click to filter by CHEM 112">CHEM 112</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 7.B -->
@@ -2026,6 +2191,9 @@
                   onclick="openSubitemModal('7.B', 'all')">
               8
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span><span class="course-tag" onclick="filterByCourse('CBE 373')" title="Click to filter by CBE 373">CBE 373</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span><span class="course-tag" onclick="filterByCourse('CBE 476')" title="Click to filter by CBE 476">CBE 476</span></div>
           </td>
         </tr>
         
@@ -2063,6 +2231,9 @@
               5
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span><span class="course-tag" onclick="filterByCourse('CBE 373')" title="Click to filter by CBE 373">CBE 373</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 7.D -->
@@ -2098,6 +2269,9 @@
                   onclick="openSubitemModal('7.D', 'all')">
               3
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span><span class="course-tag" onclick="filterByCourse('CBE 373')" title="Click to filter by CBE 373">CBE 373</span></div>
           </td>
         </tr>
         
@@ -2135,6 +2309,9 @@
               2
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 373')" title="Click to filter by CBE 373">CBE 373</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 7.F -->
@@ -2170,6 +2347,9 @@
                   onclick="openSubitemModal('7.F', 'all')">
               8
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span><span class="course-tag" onclick="filterByCourse('CBE 373')" title="Click to filter by CBE 373">CBE 373</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span><span class="course-tag" onclick="filterByCourse('CBE 476')" title="Click to filter by CBE 476">CBE 476</span></div>
           </td>
         </tr>
         
@@ -2207,6 +2387,9 @@
               3
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 373')" title="Click to filter by CBE 373">CBE 373</span><span class="course-tag" onclick="filterByCourse('CBE 386')" title="Click to filter by CBE 386">CBE 386</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 7.H -->
@@ -2243,6 +2426,9 @@
               2
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span><span class="course-tag" onclick="filterByCourse('CBE 373')" title="Click to filter by CBE 373">CBE 373</span></div>
+          </td>
         </tr>
         
         <!-- Topic Header Row: 8. Material/Energy Balances -->
@@ -2265,6 +2451,9 @@
           <td class="cell-center">
             <span class="coverage-pill has-matches" 
                   onclick="openTopicModal('8', 'all')">19</span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 170')" title="Click to filter by CBE 170">CBE 170</span><span class="course-tag" onclick="filterByCourse('CBE 263')" title="Click to filter by CBE 263">CBE 263</span><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span><span class="course-tag" onclick="filterByCourse('CBE 376')" title="Click to filter by CBE 376">CBE 376</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span><span class="course-tag" onclick="filterByCourse('CBE 476')" title="Click to filter by CBE 476">CBE 476</span></div>
           </td>
         </tr>
     
@@ -2302,6 +2491,9 @@
               4
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 263')" title="Click to filter by CBE 263">CBE 263</span><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span><span class="course-tag" onclick="filterByCourse('CBE 476')" title="Click to filter by CBE 476">CBE 476</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 8.B -->
@@ -2337,6 +2529,9 @@
                   onclick="openSubitemModal('8.B', 'all')">
               1
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span></div>
           </td>
         </tr>
         
@@ -2374,6 +2569,9 @@
               9
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 170')" title="Click to filter by CBE 170">CBE 170</span><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span><span class="course-tag" onclick="filterByCourse('CBE 376')" title="Click to filter by CBE 376">CBE 376</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span><span class="course-tag" onclick="filterByCourse('CBE 476')" title="Click to filter by CBE 476">CBE 476</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 8.D -->
@@ -2409,6 +2607,9 @@
                   onclick="openSubitemModal('8.D', 'all')">
               1
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 376')" title="Click to filter by CBE 376">CBE 376</span></div>
           </td>
         </tr>
         
@@ -2446,6 +2647,9 @@
               2
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 8.F -->
@@ -2482,6 +2686,9 @@
               2
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span></div>
+          </td>
         </tr>
         
         <!-- Topic Header Row: 9. Heat Transfer -->
@@ -2504,6 +2711,9 @@
           <td class="cell-center">
             <span class="coverage-pill has-matches" 
                   onclick="openTopicModal('9', 'all')">15</span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 376')" title="Click to filter by CBE 376">CBE 376</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span><span class="course-tag" onclick="filterByCourse('CBE 479')" title="Click to filter by CBE 479">CBE 479</span></div>
           </td>
         </tr>
     
@@ -2541,6 +2751,9 @@
               4
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 376')" title="Click to filter by CBE 376">CBE 376</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 9.B -->
@@ -2576,6 +2789,9 @@
                   onclick="openSubitemModal('9.B', 'all')">
               3
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 376')" title="Click to filter by CBE 376">CBE 376</span></div>
           </td>
         </tr>
         
@@ -2613,6 +2829,9 @@
               3
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 376')" title="Click to filter by CBE 376">CBE 376</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 9.D -->
@@ -2648,6 +2867,9 @@
                   onclick="openSubitemModal('9.D', 'all')">
               2
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 376')" title="Click to filter by CBE 376">CBE 376</span></div>
           </td>
         </tr>
         
@@ -2685,6 +2907,9 @@
               3
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 376')" title="Click to filter by CBE 376">CBE 376</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span><span class="course-tag" onclick="filterByCourse('CBE 479')" title="Click to filter by CBE 479">CBE 479</span></div>
+          </td>
         </tr>
         
         <!-- Topic Header Row: 10. Mass Transfer and Separation -->
@@ -2707,6 +2932,9 @@
           <td class="cell-center">
             <span class="coverage-pill has-matches" 
                   onclick="openTopicModal('10', 'all')">17</span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span><span class="course-tag" onclick="filterByCourse('CBE 376')" title="Click to filter by CBE 376">CBE 376</span><span class="course-tag" onclick="filterByCourse('CBE 445')" title="Click to filter by CBE 445">CBE 445</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span><span class="course-tag" onclick="filterByCourse('CBE 476')" title="Click to filter by CBE 476">CBE 476</span></div>
           </td>
         </tr>
     
@@ -2744,6 +2972,9 @@
               2
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 376')" title="Click to filter by CBE 376">CBE 376</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 10.B -->
@@ -2779,6 +3010,9 @@
                   onclick="openSubitemModal('10.B', 'all')">
               2
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 376')" title="Click to filter by CBE 376">CBE 376</span></div>
           </td>
         </tr>
         
@@ -2816,6 +3050,9 @@
               8
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 445')" title="Click to filter by CBE 445">CBE 445</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span><span class="course-tag" onclick="filterByCourse('CBE 476')" title="Click to filter by CBE 476">CBE 476</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 10.D -->
@@ -2851,6 +3088,9 @@
                   onclick="openSubitemModal('10.D', 'all')">
               2
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 476')" title="Click to filter by CBE 476">CBE 476</span></div>
           </td>
         </tr>
         
@@ -2888,6 +3128,9 @@
               2
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span><span class="course-tag" onclick="filterByCourse('CBE 476')" title="Click to filter by CBE 476">CBE 476</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 10.F -->
@@ -2924,6 +3167,9 @@
               1
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span></div>
+          </td>
         </tr>
         
         <!-- Topic Header Row: 11. Solids Handling -->
@@ -2946,6 +3192,9 @@
           <td class="cell-center">
             <span class="coverage-pill zero-matches" 
                   onclick="openTopicModal('11', 'all')">0</span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="text-muted" style="color: #94a3b8; font-size: 13px;">—</span></div>
           </td>
         </tr>
     
@@ -2983,6 +3232,9 @@
               0
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="text-muted" style="color: #94a3b8; font-size: 13px;">—</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 11.B -->
@@ -3018,6 +3270,9 @@
                   onclick="openSubitemModal('11.B', 'all')">
               0
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="text-muted" style="color: #94a3b8; font-size: 13px;">—</span></div>
           </td>
         </tr>
         
@@ -3055,6 +3310,9 @@
               0
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="text-muted" style="color: #94a3b8; font-size: 13px;">—</span></div>
+          </td>
         </tr>
         
         <!-- Topic Header Row: 12. Chemical Reaction Engineering -->
@@ -3077,6 +3335,9 @@
           <td class="cell-center">
             <span class="coverage-pill has-matches" 
                   onclick="openTopicModal('12', 'all')">19</span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span><span class="course-tag" onclick="filterByCourse('CBE 386')" title="Click to filter by CBE 386">CBE 386</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span><span class="course-tag" onclick="filterByCourse('CBE 479')" title="Click to filter by CBE 479">CBE 479</span></div>
           </td>
         </tr>
     
@@ -3114,6 +3375,9 @@
               3
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 386')" title="Click to filter by CBE 386">CBE 386</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 12.B -->
@@ -3149,6 +3413,9 @@
                   onclick="openSubitemModal('12.B', 'all')">
               1
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 386')" title="Click to filter by CBE 386">CBE 386</span></div>
           </td>
         </tr>
         
@@ -3186,6 +3453,9 @@
               5
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span><span class="course-tag" onclick="filterByCourse('CBE 386')" title="Click to filter by CBE 386">CBE 386</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 12.D -->
@@ -3221,6 +3491,9 @@
                   onclick="openSubitemModal('12.D', 'all')">
               3
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 386')" title="Click to filter by CBE 386">CBE 386</span></div>
           </td>
         </tr>
         
@@ -3258,6 +3531,9 @@
               6
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 386')" title="Click to filter by CBE 386">CBE 386</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span><span class="course-tag" onclick="filterByCourse('CBE 479')" title="Click to filter by CBE 479">CBE 479</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 12.F -->
@@ -3294,6 +3570,9 @@
               1
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 386')" title="Click to filter by CBE 386">CBE 386</span></div>
+          </td>
         </tr>
         
         <!-- Topic Header Row: 13. Economics -->
@@ -3316,6 +3595,9 @@
           <td class="cell-center">
             <span class="coverage-pill has-matches" 
                   onclick="openTopicModal('13', 'all')">10</span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 311')" title="Click to filter by CBE 311">CBE 311</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span><span class="course-tag" onclick="filterByCourse('ECON 110')" title="Click to filter by ECON 110">ECON 110</span></div>
           </td>
         </tr>
     
@@ -3353,6 +3635,9 @@
               2
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 13.B -->
@@ -3388,6 +3673,9 @@
                   onclick="openSubitemModal('13.B', 'all')">
               4
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span><span class="course-tag" onclick="filterByCourse('ECON 110')" title="Click to filter by ECON 110">ECON 110</span></div>
           </td>
         </tr>
         
@@ -3425,6 +3713,9 @@
               2
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 311')" title="Click to filter by CBE 311">CBE 311</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 13.D -->
@@ -3461,6 +3752,9 @@
               2
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span></div>
+          </td>
         </tr>
         
         <!-- Topic Header Row: 14. Process Design -->
@@ -3483,6 +3777,9 @@
           <td class="cell-center">
             <span class="coverage-pill has-matches" 
                   onclick="openTopicModal('14', 'all')">15</span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span><span class="course-tag" onclick="filterByCourse('CBE 311')" title="Click to filter by CBE 311">CBE 311</span><span class="course-tag" onclick="filterByCourse('CBE 376')" title="Click to filter by CBE 376">CBE 376</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span><span class="course-tag" onclick="filterByCourse('CBE 476')" title="Click to filter by CBE 476">CBE 476</span></div>
           </td>
         </tr>
     
@@ -3520,6 +3817,9 @@
               2
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 14.B -->
@@ -3555,6 +3855,9 @@
                   onclick="openSubitemModal('14.B', 'all')">
               6
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 376')" title="Click to filter by CBE 376">CBE 376</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span><span class="course-tag" onclick="filterByCourse('CBE 476')" title="Click to filter by CBE 476">CBE 476</span></div>
           </td>
         </tr>
         
@@ -3592,6 +3895,9 @@
               1
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 14.D -->
@@ -3627,6 +3933,9 @@
                   onclick="openSubitemModal('14.D', 'all')">
               4
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span><span class="course-tag" onclick="filterByCourse('CBE 476')" title="Click to filter by CBE 476">CBE 476</span></div>
           </td>
         </tr>
         
@@ -3664,6 +3973,9 @@
               2
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 311')" title="Click to filter by CBE 311">CBE 311</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span></div>
+          </td>
         </tr>
         
         <!-- Topic Header Row: 15. Process Control -->
@@ -3686,6 +3998,9 @@
           <td class="cell-center">
             <span class="coverage-pill has-matches" 
                   onclick="openTopicModal('15', 'all')">8</span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 436')" title="Click to filter by CBE 436">CBE 436</span><span class="course-tag" onclick="filterByCourse('CBE 445')" title="Click to filter by CBE 445">CBE 445</span></div>
           </td>
         </tr>
     
@@ -3723,6 +4038,9 @@
               1
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 436')" title="Click to filter by CBE 436">CBE 436</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 15.B -->
@@ -3758,6 +4076,9 @@
                   onclick="openSubitemModal('15.B', 'all')">
               3
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 436')" title="Click to filter by CBE 436">CBE 436</span></div>
           </td>
         </tr>
         
@@ -3795,6 +4116,9 @@
               4
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 436')" title="Click to filter by CBE 436">CBE 436</span><span class="course-tag" onclick="filterByCourse('CBE 445')" title="Click to filter by CBE 445">CBE 445</span></div>
+          </td>
         </tr>
         
         <!-- Topic Header Row: 16. Safety, Health, and Environment -->
@@ -3817,6 +4141,9 @@
           <td class="cell-center">
             <span class="coverage-pill has-matches" 
                   onclick="openTopicModal('16', 'all')">13</span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 311')" title="Click to filter by CBE 311">CBE 311</span><span class="course-tag" onclick="filterByCourse('CBE 386')" title="Click to filter by CBE 386">CBE 386</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span><span class="course-tag" onclick="filterByCourse('CBE 479')" title="Click to filter by CBE 479">CBE 479</span></div>
           </td>
         </tr>
     
@@ -3854,6 +4181,9 @@
               3
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 311')" title="Click to filter by CBE 311">CBE 311</span><span class="course-tag" onclick="filterByCourse('CBE 479')" title="Click to filter by CBE 479">CBE 479</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 16.B -->
@@ -3889,6 +4219,9 @@
                   onclick="openSubitemModal('16.B', 'all')">
               3
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 311')" title="Click to filter by CBE 311">CBE 311</span><span class="course-tag" onclick="filterByCourse('CBE 479')" title="Click to filter by CBE 479">CBE 479</span></div>
           </td>
         </tr>
         
@@ -3926,6 +4259,9 @@
               2
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 311')" title="Click to filter by CBE 311">CBE 311</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 16.D -->
@@ -3961,6 +4297,9 @@
                   onclick="openSubitemModal('16.D', 'all')">
               2
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 311')" title="Click to filter by CBE 311">CBE 311</span><span class="course-tag" onclick="filterByCourse('CBE 479')" title="Click to filter by CBE 479">CBE 479</span></div>
           </td>
         </tr>
         
@@ -3998,6 +4337,9 @@
               2
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 16.F -->
@@ -4034,6 +4376,9 @@
               1
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 386')" title="Click to filter by CBE 386">CBE 386</span></div>
+          </td>
         </tr>
         
         <!-- Topic Header Row: 17. Ethics and Professional Practice -->
@@ -4056,6 +4401,9 @@
           <td class="cell-center">
             <span class="coverage-pill has-matches" 
                   onclick="openTopicModal('17', 'all')">15</span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span><span class="course-tag" onclick="filterByCourse('CBE 291')" title="Click to filter by CBE 291">CBE 291</span><span class="course-tag" onclick="filterByCourse('CBE 311')" title="Click to filter by CBE 311">CBE 311</span><span class="course-tag" onclick="filterByCourse('CBE 374')" title="Click to filter by CBE 374">CBE 374</span><span class="course-tag" onclick="filterByCourse('CBE 378')" title="Click to filter by CBE 378">CBE 378</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span><span class="course-tag" onclick="filterByCourse('CBE 461')" title="Click to filter by CBE 461">CBE 461</span><span class="course-tag" onclick="filterByCourse('CBE 476')" title="Click to filter by CBE 476">CBE 476</span><span class="course-tag" onclick="filterByCourse('WRTG 316')" title="Click to filter by WRTG 316">WRTG 316</span></div>
           </td>
         </tr>
     
@@ -4093,6 +4441,9 @@
               6
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span><span class="course-tag" onclick="filterByCourse('CBE 311')" title="Click to filter by CBE 311">CBE 311</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span><span class="course-tag" onclick="filterByCourse('WRTG 316')" title="Click to filter by WRTG 316">WRTG 316</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 17.B -->
@@ -4128,6 +4479,9 @@
                   onclick="openSubitemModal('17.B', 'all')">
               1
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 291')" title="Click to filter by CBE 291">CBE 291</span></div>
           </td>
         </tr>
         
@@ -4165,6 +4519,9 @@
               7
             </span>
           </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('CBE 273')" title="Click to filter by CBE 273">CBE 273</span><span class="course-tag" onclick="filterByCourse('CBE 311')" title="Click to filter by CBE 311">CBE 311</span><span class="course-tag" onclick="filterByCourse('CBE 374')" title="Click to filter by CBE 374">CBE 374</span><span class="course-tag" onclick="filterByCourse('CBE 378')" title="Click to filter by CBE 378">CBE 378</span><span class="course-tag" onclick="filterByCourse('CBE 451')" title="Click to filter by CBE 451">CBE 451</span><span class="course-tag" onclick="filterByCourse('CBE 461')" title="Click to filter by CBE 461">CBE 461</span><span class="course-tag" onclick="filterByCourse('CBE 476')" title="Click to filter by CBE 476">CBE 476</span></div>
+          </td>
         </tr>
         
         <!-- Subitem Row: 17.D -->
@@ -4200,6 +4557,9 @@
                   onclick="openSubitemModal('17.D', 'all')">
               1
             </span>
+          </td>
+          <td class="cell-courses">
+            <div class="course-tags-container"><span class="course-tag" onclick="filterByCourse('WRTG 316')" title="Click to filter by WRTG 316">WRTG 316</span></div>
           </td>
         </tr>
         
@@ -4455,9 +4815,11 @@
 
   // Filter Functions
   function filterByCourse(courseCode) {
+    const sel = document.getElementById('courseFilter');
+    if (sel) sel.value = courseCode || '';
     const rows = document.querySelectorAll('tr.subitem-row');
     rows.forEach(r => {
-      const courses = r.getAttribute('data-courses').split(',');
+      const courses = r.getAttribute('data-courses').split(',').map(s => s.trim());
       if (!courseCode || courses.includes(courseCode)) {
         r.style.display = '';
         if (courseCode) r.classList.add('highlighted');
