@@ -105,7 +105,7 @@ def get_refined_matcher():
 
         # 5. Chemistry and Biology (7-11)
         "5.A": lambda c, t, o, it: (
-            c in ["CHEM 111", "CHEM 112", "CBE 273"] and (
+            c in ["CHEM 111", "CHEM 112"] and (
                 any(w in t for w in ["inorganic chemistry", "molarity", "normality", "molality", "acids", "bases", "redox", "solubility product", "ph", "periodic table", "electrochemistry", "stoichiometry", "principles of chemistry"])
             )
         ),
@@ -307,21 +307,10 @@ def get_refined_matcher():
             or (c == "CBE 273" and "latent heat" in t)
         ),
 
-        # 11. Solids Handling (3-5)
-        "11.A": lambda c, t, o, it: (
-            (c in ["CBE 378", "CBE 374", "CBE 345", "CBE 479"] and any(w in t for w in ["particle properties", "surface and bulk forces", "particle size", "porous media", "particle characterization", "solid materials"]))
-            or (c == "PHSCS 121" and "particles" in t)
-        ),
-        "11.B": lambda c, t, o, it: (
-            c in ["CBE 345", "CBE 476", "CBE 479", "CBE 378"] and (
-                any(w in t for w in ["crushing", "grinding", "crystallization", "filtration", "comminution", "solids processing", "operate real process equipment"])
-            )
-        ),
-        "11.C": lambda c, t, o, it: (
-            c in ["CBE 374", "CBE 451", "CBE 479"] and (
-                any(w in t for w in ["transportation and storage", "belts", "pneumatic", "slurries", "hopper", "silo", "fluidization", "fluidized bed", "piping, and fittings", "porous media"])
-            )
-        ),
+        # 11. Solids Handling (3-5) - Set to zero as requested (not covered in courses taught)
+        "11.A": lambda c, t, o, it: False,
+        "11.B": lambda c, t, o, it: False,
+        "11.C": lambda c, t, o, it: False,
 
         # 12. Chemical Reaction Engineering (7-11)
         "12.A": lambda c, t, o, it: (

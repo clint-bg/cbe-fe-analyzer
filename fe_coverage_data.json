@@ -1169,11 +1169,10 @@
         "subId": "A",
         "fullId": "5.A",
         "title": "Inorganic chemistry (e.g., molarity, normality, molality, acids, bases, redox reactions, valence, solubility product, pH, pK, electrochemistry, periodic table)",
-        "loCount": 10,
+        "loCount": 5,
         "descCount": 1,
-        "totalCount": 11,
+        "totalCount": 6,
         "courses": [
-          "CBE 273",
           "CHEM 111",
           "CHEM 112"
         ],
@@ -1187,56 +1186,6 @@
             "outcomeName": "Course Description",
             "text": "Stoichiometry, kinetic-molecular theory, thermodynamics, states of matter, solutions and equilibria, electrochemistry, structure and bonding, chemical reactions, kinetics.",
             "fullLabel": "CHEM 111 - Course Description"
-          },
-          {
-            "courseCode": "CBE 273",
-            "courseTitle": "Chem & Bio Process Principles",
-            "catalogUrl": "https://catalog.byu.edu/courses/00949-000",
-            "itemType": "learning_outcome",
-            "outcomeIndex": 6,
-            "outcomeName": "Engineering Intuition (BYU Course Objective)",
-            "text": "Engineering Intuition (BYU Course Objective): Students will be able to make order of magnitude estimates, assess reasonableness of solutions, and select appropriate levels of solution sophistication.",
-            "fullLabel": "CBE 273 - LO #6: Engineering Intuition (BYU Course Objective)"
-          },
-          {
-            "courseCode": "CBE 273",
-            "courseTitle": "Chem & Bio Process Principles",
-            "catalogUrl": "https://catalog.byu.edu/courses/00949-000",
-            "itemType": "learning_outcome",
-            "outcomeIndex": 15,
-            "outcomeName": "Phase Equilibrium (BYU Course Objective)",
-            "text": "Phase Equilibrium (BYU Course Objective): Students will be able to apply solution thermodynamics fundamentals to solve phase equilibrium problems including bubble point, dew point and flash calculations.",
-            "fullLabel": "CBE 273 - LO #15: Phase Equilibrium (BYU Course Objective)"
-          },
-          {
-            "courseCode": "CBE 273",
-            "courseTitle": "Chem & Bio Process Principles",
-            "catalogUrl": "https://catalog.byu.edu/courses/00949-000",
-            "itemType": "learning_outcome",
-            "outcomeIndex": 18,
-            "outcomeName": "Phase Diagrams (BYU Course Objective)",
-            "text": "Phase Diagrams (BYU Course Objective): Students will be able to read and understand phase diagrams and use these to determine physical phenomena.",
-            "fullLabel": "CBE 273 - LO #18: Phase Diagrams (BYU Course Objective)"
-          },
-          {
-            "courseCode": "CBE 273",
-            "courseTitle": "Chem & Bio Process Principles",
-            "catalogUrl": "https://catalog.byu.edu/courses/00949-000",
-            "itemType": "learning_outcome",
-            "outcomeIndex": 19,
-            "outcomeName": "Pure-component Phase Behavior (BYU Course Objective)",
-            "text": "Pure-component Phase Behavior (BYU Course Objective): Students will be able to solve problems related to pure-component phase behavior including vapor pressure, critical point, freezing line, triple point, etc.",
-            "fullLabel": "CBE 273 - LO #19: Pure-component Phase Behavior (BYU Course Objective)"
-          },
-          {
-            "courseCode": "CBE 273",
-            "courseTitle": "Chem & Bio Process Principles",
-            "catalogUrl": "https://catalog.byu.edu/courses/00949-000",
-            "itemType": "learning_outcome",
-            "outcomeIndex": 20,
-            "outcomeName": "Molecular-level Understanding (BYU Course Objective)",
-            "text": "Molecular-level Understanding (BYU Course Objective): Students will be able to analyze how molecular- and continuum-scale phenomena lead to macroscopic behavior, processes, and properties (e.g., how molecular motion explains temperature and pressure, how intermolecular forces relate to phase changes, and how conservation laws underpin material, energy balances, etc.).",
-            "fullLabel": "CBE 273 - LO #20: Molecular-level Understanding (BYU Course Objective)"
           },
           {
             "courseCode": "CHEM 111",
@@ -1480,9 +1429,9 @@
         ]
       }
     ],
-    "totalLoCount": 18,
+    "totalLoCount": 13,
     "totalDescCount": 6,
-    "totalMatchesCount": 24
+    "totalMatchesCount": 19
   },
   {
     "id": "6",
@@ -3190,118 +3139,36 @@
         "subId": "A",
         "fullId": "11.A",
         "title": "Particle properties (e.g., surface and bulk forces, particle size distribution)",
-        "loCount": 2,
-        "descCount": 1,
-        "totalCount": 3,
-        "courses": [
-          "CBE 378",
-          "PHSCS 121"
-        ],
-        "matches": [
-          {
-            "courseCode": "CBE 378",
-            "courseTitle": "Materials Science",
-            "catalogUrl": "https://catalog.byu.edu/courses/00951-001",
-            "itemType": "course_description",
-            "outcomeIndex": null,
-            "outcomeName": "Course Description",
-            "text": "Fundamental principles of solid materials and their properties and behavior in engineering applications of metals, polymers, ceramics, and glasses.",
-            "fullLabel": "CBE 378 - Course Description"
-          },
-          {
-            "courseCode": "PHSCS 121",
-            "courseTitle": "Intro to Newtonian Mechanics",
-            "catalogUrl": "https://catalog.byu.edu/courses/04540-015",
-            "itemType": "learning_outcome",
-            "outcomeIndex": 2,
-            "outcomeName": "Position, Velocity, and Acceleration",
-            "text": "Position, Velocity, and Acceleration: Use vector notation to describe position, velocity, and acceleration of particles in one and two dimensions. Understand how time derivatives and the fundamental theorem of calculus connect these three concepts.",
-            "fullLabel": "PHSCS 121 - LO #2: Position, Velocity, and Acceleration"
-          },
-          {
-            "courseCode": "PHSCS 121",
-            "courseTitle": "Intro to Newtonian Mechanics",
-            "catalogUrl": "https://catalog.byu.edu/courses/04540-015",
-            "itemType": "learning_outcome",
-            "outcomeIndex": 4,
-            "outcomeName": "Newton's Laws",
-            "text": "Newton's Laws: Understand Newton\u2019s three laws of motion and use them to solve conceptual and numerical problems. Use Newton's Second Law to calculate the motion of particles and extended objects in translation, rotation, and simple harmonic oscillation given a set of forces and torques acting on them. Represent motion in one and two dimensions using Cartesian and polar coordinates. Use Newton's law of gravity to calculate how massive objects move over distances that are large compared to the size of the objects. Connect Newton\u2019s law of gravity to Kepler\u2019s Laws of planetary motion",
-            "fullLabel": "PHSCS 121 - LO #4: Newton's Laws"
-          }
-        ]
+        "loCount": 0,
+        "descCount": 0,
+        "totalCount": 0,
+        "courses": [],
+        "matches": []
       },
       {
         "subId": "B",
         "fullId": "11.B",
         "title": "Processing (e.g., crushing, grinding, crystallization)",
-        "loCount": 2,
+        "loCount": 0,
         "descCount": 0,
-        "totalCount": 2,
-        "courses": [
-          "CBE 345",
-          "CBE 479"
-        ],
-        "matches": [
-          {
-            "courseCode": "CBE 345",
-            "courseTitle": "Materials and Reactions Lab",
-            "catalogUrl": "https://catalog.byu.edu/courses/13585-000",
-            "itemType": "learning_outcome",
-            "outcomeIndex": 2,
-            "outcomeName": "Process Equipment (BYU Course Objective)",
-            "text": "Process Equipment (BYU Course Objective): Students will be able to explain and operate real process equipment.",
-            "fullLabel": "CBE 345 - LO #2: Process Equipment (BYU Course Objective)"
-          },
-          {
-            "courseCode": "CBE 479",
-            "courseTitle": "Unit Operations Laboratory",
-            "catalogUrl": "https://catalog.byu.edu/courses/13638-000",
-            "itemType": "learning_outcome",
-            "outcomeIndex": 9,
-            "outcomeName": "Process Equipment (BYU Course Objective)",
-            "text": "Process Equipment (BYU Course Objective): Students will be able to explain and operate real process equipment.",
-            "fullLabel": "CBE 479 - LO #9: Process Equipment (BYU Course Objective)"
-          }
-        ]
+        "totalCount": 0,
+        "courses": [],
+        "matches": []
       },
       {
         "subId": "C",
         "fullId": "11.C",
         "title": "Transportation and storage (e.g., belts, pneumatic, slurries, tanks, hoppers)",
-        "loCount": 2,
+        "loCount": 0,
         "descCount": 0,
-        "totalCount": 2,
-        "courses": [
-          "CBE 451",
-          "CBE 479"
-        ],
-        "matches": [
-          {
-            "courseCode": "CBE 479",
-            "courseTitle": "Unit Operations Laboratory",
-            "catalogUrl": "https://catalog.byu.edu/courses/13638-000",
-            "itemType": "learning_outcome",
-            "outcomeIndex": 11,
-            "outcomeName": "Pumps and Valves (BYU Course Objective)",
-            "text": "Pumps and Valves (BYU Course Objective): Students will be able to design flow systems involving pumps, valves, piping, and fittings.",
-            "fullLabel": "CBE 479 - LO #11: Pumps and Valves (BYU Course Objective)"
-          },
-          {
-            "courseCode": "CBE 451",
-            "courseTitle": "Capstone I: Process Design",
-            "catalogUrl": "https://catalog.byu.edu/courses/07617-000",
-            "itemType": "learning_outcome",
-            "outcomeIndex": 19,
-            "outcomeName": "Flow Systems (BYU Course Objective)",
-            "text": "Flow Systems (BYU Course Objective): Students will be able to design flow systems involving pumps, valves, piping, and fittings.",
-            "fullLabel": "CBE 451 - LO #19: Flow Systems (BYU Course Objective)"
-          }
-        ]
+        "totalCount": 0,
+        "courses": [],
+        "matches": []
       }
     ],
-    "totalLoCount": 6,
-    "totalDescCount": 1,
-    "totalMatchesCount": 7
+    "totalLoCount": 0,
+    "totalDescCount": 0,
+    "totalMatchesCount": 0
   },
   {
     "id": "12",
