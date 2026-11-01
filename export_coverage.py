@@ -341,3 +341,37 @@ with open("fe_exam_byu_coverage.csv", "w", newline="", encoding="utf-8") as f:
     writer.writerows(csv_rows)
 
 print("Saved fe_exam_byu_coverage.csv")
+
+# Identify Learning Outcomes not matched to any FE topic
+matched_lo_keys = set()
+for topic in full_topics_data:
+    for item in topic["items"]:
+        for m in item["matches"]:
+            if m["itemType"] == "learning_outcome":
+                matched_lo_keys.add((m["courseCode"], m["outcomeIndex"]))
+
+unmatched_los = []
+for row in itemized:
+    idx_str = row["Outcome Index"].strip()
+    if not idx_str:
+        continue
+    code = row["Course Code"]
+    idx = int(idx_str)
+    if (code, idx) not in matched_lo_keys:
+        unmatched_los.append({
+            "Course Code": code,
+            "Course Title": row["Course Title"],
+            "Outcome Index": idx,
+            "Outcome Name": row["Outcome Name"],
+            "Outcome Objective": row["Outcome Objective"],
+            "Catalog URL": row["Catalog URL"]
+        })
+
+with open("byu_course_learning_outcomes_non_fe.csv", "w", newline="", encoding="utf-8") as f:
+    writer = csv.DictWriter(f, fieldnames=[
+        "Course Code", "Course Title", "Outcome Index", "Outcome Name", "Outcome Objective", "Catalog URL"
+    ])
+    writer.writeheader()
+    writer.writerows(unmatched_los)
+
+print(f"Saved byu_course_learning_outcomes_non_fe.csv ({len(unmatched_los)} outcomes)")

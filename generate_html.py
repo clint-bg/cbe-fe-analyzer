@@ -1,15 +1,10 @@
 import json
+import csv
+import html
 
 # Read fe_coverage_data.json
 with open("fe_coverage_data.json", encoding="utf-8") as f:
     coverage_data = json.load(f)
-
-# Compute stats
-total_subitems = sum(len(t["items"]) for t in coverage_data)
-covered_subitems = sum(sum(1 for it in t["items"] if it["totalCount"] > 0) for t in coverage_data)
-total_lo_matches = sum(t["totalLoCount"] for t in coverage_data)
-total_desc_matches = sum(t["totalDescCount"] for t in coverage_data)
-all_courses = sorted(list(set(c for t in coverage_data for it in t["items"] for c in it["courses"])))
 
 # Read CSV contents for self-contained downloads
 with open("fe_exam_byu_coverage.csv", encoding="utf-8") as f:
@@ -20,6 +15,48 @@ with open("byu_courses.csv", encoding="utf-8") as f:
 
 with open("byu_course_learning_outcomes_itemized.csv", encoding="utf-8") as f:
     csv_itemized = f.read()
+
+with open("byu_course_learning_outcomes_non_fe.csv", encoding="utf-8") as f:
+    csv_non_fe = f.read()
+
+with open("byu_course_learning_outcomes_non_fe.csv", encoding="utf-8") as f:
+    non_fe_los = list(csv.DictReader(f))
+
+# Compute stats
+total_subitems = sum(len(t["items"]) for t in coverage_data)
+covered_subitems = sum(sum(1 for it in t["items"] if it["totalCount"] > 0) for t in coverage_data)
+total_lo_matches = sum(t["totalLoCount"] for t in coverage_data)
+total_desc_matches = sum(t["totalDescCount"] for t in coverage_data)
+all_courses = sorted(list(set(c for t in coverage_data for it in t["items"] for c in it["courses"])))
+
+# Pre-build non-FE learning outcome rows
+non_fe_rows_html = ""
+for lo in non_fe_los:
+    c_code = html.escape(lo["Course Code"])
+    c_title = html.escape(lo["Course Title"])
+    c_idx = lo["Outcome Index"]
+    c_name = html.escape(lo["Outcome Name"])
+    c_obj = html.escape(lo["Outcome Objective"])
+    c_url = html.escape(lo["Catalog URL"])
+
+    non_fe_rows_html += f"""
+        <tr class="non-fe-row" data-course="{c_code}">
+          <td style="vertical-align: top; white-space: nowrap;">
+            <span class="course-tag" onclick="filterByCourse('{c_code}')" title="Click to filter by {c_code}">{c_code}</span>
+            <div class="course-subtitle" style="white-space: normal; max-width: 170px;">{c_title}</div>
+          </td>
+          <td style="vertical-align: top;">
+            <span class="lo-index-badge">LO #{c_idx}</span>
+            <strong style="color: #0f172a; font-size: 13px;">{c_name}</strong>
+          </td>
+          <td style="vertical-align: top; color: #334155; line-height: 1.5; font-size: 13px;">
+            {c_obj}
+          </td>
+          <td style="vertical-align: top; text-align: center; white-space: nowrap;">
+            <a href="{c_url}" target="_blank" class="catalog-link">Catalog &nearr;</a>
+          </td>
+        </tr>
+    """
 
 html_content = f"""<!DOCTYPE html>
 <html lang="en">
@@ -594,6 +631,115 @@ html_content = f"""<!DOCTYPE html>
       flex: 1;
     }}
 
+    /* Non-FE Learning Outcomes Section */
+    .non-fe-section {{
+      padding: 32px 40px;
+      background: #ffffff;
+      border-top: 2px solid #cbd5e1;
+    }}
+
+    .non-fe-header {{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 20px;
+    }}
+
+    .non-fe-title-group {{
+      max-width: 820px;
+    }}
+
+    .non-fe-badge {{
+      display: inline-block;
+      background: #002e5d;
+      color: #fff;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }}
+
+    .non-fe-title {{
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }}
+
+    .non-fe-subtitle {{
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }}
+
+    .non-fe-controls {{
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }}
+
+    .non-fe-table {{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }}
+
+    .non-fe-table th {{
+      background: #f1f5f9;
+      padding: 10px 14px;
+      border-bottom: 2px solid #cbd5e1;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #0f172a;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }}
+
+    .non-fe-row {{
+      border-bottom: 1px solid #f1f5f9;
+      transition: background-color 0.15s ease;
+    }}
+
+    .non-fe-row:hover {{
+      background-color: #f8fafc;
+    }}
+
+    .non-fe-row td {{
+      padding: 10px 14px;
+      vertical-align: top;
+    }}
+
+    .lo-index-badge {{
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      background: #e2e8f0;
+      color: #334155;
+      padding: 1px 6px;
+      border-radius: 4px;
+      margin-right: 6px;
+    }}
+
+    .course-subtitle {{
+      font-size: 11.5px;
+      color: #64748b;
+      margin-top: 3px;
+      line-height: 1.3;
+    }}
+
     .footer {{
       padding: 24px 40px;
       border-top: 1px solid var(--border);
@@ -635,13 +781,17 @@ html_content = f"""<!DOCTYPE html>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
         Download Coverage CSV
       </button>
+      <button onclick="downloadCsv('non_fe')" class="btn" title="Download Non-FE Learning Outcomes CSV">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        Non-FE LOs CSV ({len(non_fe_los)})
+      </button>
       <button onclick="downloadCsv('courses')" class="btn" title="Download All 34 BYU Courses CSV">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
         Courses CSV
       </button>
       <button onclick="downloadCsv('itemized')" class="btn" title="Download Itemized Learning Outcomes CSV">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-        Itemized LOs CSV
+        All LOs CSV
       </button>
       <button onclick="window.print()" class="btn">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
@@ -679,6 +829,10 @@ html_content = f"""<!DOCTYPE html>
       <div class="stat-pill">
         <span class="stat-num">{total_lo_matches}</span>
         <span>Learning Outcomes Mapped</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-num">{len(non_fe_los)}</span>
+        <span><a href="#nonFeSection" style="color:var(--primary); font-weight:600; text-decoration:underline;">Non-FE Outcomes Below &darr;</a></span>
       </div>
       <div class="stat-pill">
         <span class="stat-num">{total_desc_matches}</span>
@@ -805,6 +959,52 @@ html_content += f"""
       </tbody>
     </table>
   </div>
+
+  <!-- Non-FE Learning Outcomes Section -->
+  <section class="non-fe-section" id="nonFeSection">
+    <div class="non-fe-header">
+      <div class="non-fe-title-group">
+        <span class="non-fe-badge">Curriculum Coverage Analysis</span>
+        <h2 class="non-fe-title">Course Learning Outcomes Outside FE Exam Technical Topics</h2>
+        <p class="non-fe-subtitle">
+          Below are the <strong>{len(non_fe_los)}</strong> catalog learning outcomes (from the 34 evaluated courses) that do not directly map to the 17 technical knowledge categories on the NCEES FE Chemical CBT Exam. These outcomes cover foundational engineering and professional skills—including ABET criteria (teamwork, leadership, oral and written technical communication, experimentation, problem formulation, and critical thinking), career development seminars, and general education requirements.
+        </p>
+      </div>
+      <div class="non-fe-actions">
+        <button onclick="downloadCsv('non_fe')" class="btn btn-primary" title="Download Non-FE Learning Outcomes CSV">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Download Non-FE LOs CSV ({len(non_fe_los)})
+        </button>
+      </div>
+    </div>
+
+    <div class="non-fe-controls">
+      <div class="stat-pill">
+        <span class="stat-num" id="nonFeCount">{len(non_fe_los)}</span>
+        <span>Outcomes Displayed</span>
+      </div>
+      <div class="filter-group">
+        <label for="nonFeSearchInput"><strong>Search Non-FE Outcomes:</strong></label>
+        <input type="text" id="nonFeSearchInput" placeholder="Filter by outcome, text, or course..." oninput="filterNonFeTable()">
+      </div>
+    </div>
+
+    <div class="table-container" style="max-height: 520px; overflow-y: auto; border: 1px solid var(--border); border-radius: 6px;">
+      <table class="non-fe-table">
+        <thead>
+          <tr>
+            <th style="width: 18%; text-align: left;">Course</th>
+            <th style="width: 25%; text-align: left;">Outcome Name</th>
+            <th style="width: 48%; text-align: left;">Learning Outcome Objective</th>
+            <th style="width: 9%; text-align: center;">Catalog</th>
+          </tr>
+        </thead>
+        <tbody id="nonFeTableBody">
+          {non_fe_rows_html}
+        </tbody>
+      </table>
+    </div>
+  </section>
 
   <footer class="footer">
     <div>
@@ -1068,6 +1268,33 @@ html_content += f"""
         r.classList.remove('highlighted');
       }}
     }});
+    filterNonFeTable();
+  }}
+
+  function filterNonFeTable() {{
+    const sel = document.getElementById('courseFilter');
+    const courseCode = sel ? sel.value : '';
+    const searchInput = document.getElementById('nonFeSearchInput');
+    const q = (searchInput ? searchInput.value : '').toLowerCase().trim();
+
+    const rows = document.querySelectorAll('tr.non-fe-row');
+    let visibleCount = 0;
+    rows.forEach(r => {{
+      const c = r.getAttribute('data-course');
+      const text = r.textContent.toLowerCase();
+      const matchesCourse = !courseCode || c === courseCode;
+      const matchesSearch = !q || text.includes(q);
+
+      if (matchesCourse && matchesSearch) {{
+        r.style.display = '';
+        visibleCount++;
+      }} else {{
+        r.style.display = 'none';
+      }}
+    }});
+
+    const counter = document.getElementById('nonFeCount');
+    if (counter) counter.textContent = visibleCount;
   }}
 
   function searchTopics(query) {{
@@ -1090,6 +1317,10 @@ html_content += f"""
     coverage: {{
       name: 'fe_exam_byu_coverage.csv',
       data: {json.dumps(csv_coverage)}
+    }},
+    non_fe: {{
+      name: 'byu_course_learning_outcomes_non_fe.csv',
+      data: {json.dumps(csv_non_fe)}
     }},
     courses: {{
       name: 'byu_courses.csv',
